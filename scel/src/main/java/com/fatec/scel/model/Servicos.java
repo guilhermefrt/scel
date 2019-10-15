@@ -4,7 +4,10 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class Servicos {
 	/**
 	 * Objetivo - verificar se houve atraso na devolucao
@@ -15,7 +18,7 @@ public class Servicos {
 	 */
 	public Integer verificaAtraso(Emprestimo umEmprestimo) {
 		if (umEmprestimo != null) {
-			DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY/MM/dd");
+			DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 			DateTime dataAtual = fmt.parseDateTime(new DateTime().toString(fmt));
 			DateTime dataDevolucao = fmt.parseDateTime(umEmprestimo.getDataDevolucao());
 			int dias = Days.daysBetween(dataAtual, dataDevolucao).getDays();

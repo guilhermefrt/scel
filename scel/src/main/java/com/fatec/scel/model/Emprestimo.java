@@ -11,9 +11,13 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-@Entity
+@Entity(name = "Emprestimo")
 public class Emprestimo {
 
+	public Emprestimo() {
+		
+	}
+	
 	public Emprestimo(String isbn, String ra) {
 		this.isbn = isbn;
 		this.ra = ra;
@@ -26,7 +30,7 @@ public class Emprestimo {
 	@Column(name = "isbn", nullable = false, length = 4)
 	@NotEmpty(message = "O isbn deve ser preenchido")
 	private String isbn;
-	@Column(name = "ra", nullable = false, length = 4)
+	@Column(name = "ra", nullable = false, length = 100)
 	@NotEmpty(message = "O RA deve ser preenchido")
 	private String ra;
 	private String usuario;
@@ -72,7 +76,7 @@ public class Emprestimo {
 
 	public void setDataEmprestimo() {
 		DateTime dataAtual = new DateTime();
-		DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY/MM/dd");
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 		this.dataEmprestimo = dataAtual.toString(fmt);
 		setDataDevolucaoPrevista();
 	}
@@ -90,14 +94,14 @@ public class Emprestimo {
 	}
 
 	private void setDataDevolucaoPrevista() {
-		DateTimeFormatter fmt = DateTimeFormat.forPattern("YYYY/MM/dd");
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 		DateTime data = fmt.parseDateTime(getDataEmprestimo());
 		this.dataDevolucaoPrevista = data.plusDays(8).toString(fmt);
 	}
 
 	public boolean ehDomingo(String data) {
 		boolean isValida = false;
-		DateTimeFormatter fmt = DateTimeFormat.forPattern("yyyy/MM/dd");
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/YYYY");
 		if (validaData(data) == true) {
 			DateTime umaData = fmt.parseDateTime(data);
 			if (umaData.dayOfWeek().getAsText().equals("Domingo")) {
@@ -110,12 +114,12 @@ public class Emprestimo {
 	/**
 	 * valida o formato da data
 	 *
-	 * @param data no formato yyyy/MM/dd
+	 * @param data no formato dd/MM/YYYY
 	 * @return true se a data estiver no formato valido e false para formato
 	 *         invalido
 	 */
 	public boolean validaData(String data) {
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		DateFormat df = new SimpleDateFormat("dd/MM/YYYY");
 		df.setLenient(false); //
 		try {
 			df.parse(data); // data válida
