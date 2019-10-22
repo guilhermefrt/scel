@@ -44,37 +44,25 @@ public class EmprestimoController {
 		mv.addObject("emprestimo", emprestimo);
 		return mv;
 	}
-	
+
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Emprestimo emprestimo, BindingResult result) {
 		ModelAndView modelAndView = new ModelAndView("consultarEmprestimo");
-		if (result.hasErrors()) {
-			return new ModelAndView("RegistrarEmprestimo");
-		}
-		try {
-			Emprestimo jaExiste = null;
-			jaExiste = emprestimoRepository.findByIsbn(emprestimo.getIsbn());
-			if (jaExiste == null) {
-				emprestimoRepository.save(emprestimo);
-				modelAndView = new ModelAndView("consultarEmprestimo");
-				modelAndView.addObject("emprestimos", emprestimoRepository.findAll());
-				return modelAndView;
-			} else {
-				return new ModelAndView("RegistrarEmprestimo");
-			}
-		} catch (Exception e) {
-			System.out.println("erro ===> " + e.getMessage());
-			return modelAndView;
-		}
+
+		emprestimoRepository.save(emprestimo);
+		
+		modelAndView.addObject("emprestimos", emprestimoRepository.findAll());
+		return modelAndView;
+
 	}
-	
+
 	@GetMapping("/consulta")
 	public ModelAndView listar() {
 		ModelAndView modelAndView = new ModelAndView("consultarEmprestimo");
 		modelAndView.addObject("emprestimos", emprestimoRepository.findAll());
 		return modelAndView;
 	}
-	
+
 	@GetMapping("/delete/{id}")
 	public ModelAndView delete(@PathVariable("id") Long id) {
 		emprestimoRepository.deleteById(id);

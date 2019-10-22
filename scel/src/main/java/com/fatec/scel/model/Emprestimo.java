@@ -15,9 +15,9 @@ import org.joda.time.format.DateTimeFormatter;
 public class Emprestimo {
 
 	public Emprestimo() {
-		
+
 	}
-	
+
 	public Emprestimo(String isbn, String ra) {
 		this.isbn = isbn;
 		this.ra = ra;
@@ -33,7 +33,7 @@ public class Emprestimo {
 	@Column(name = "ra", nullable = false, length = 100)
 	@NotEmpty(message = "O RA deve ser preenchido")
 	private String ra;
-	private String usuario;
+	
 	private String dataEmprestimo;
 	private String dataDevolucao;
 	private String dataDevolucaoPrevista;
@@ -60,14 +60,6 @@ public class Emprestimo {
 
 	public void setRa(String ra) {
 		this.ra = ra;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getDataEmprestimo() {
