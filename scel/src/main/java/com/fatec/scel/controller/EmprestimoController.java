@@ -48,7 +48,8 @@ public class EmprestimoController {
 	@PostMapping("/save")
 	public ModelAndView save(@Valid Emprestimo emprestimo, BindingResult result) {
 		ModelAndView modelAndView = new ModelAndView("consultarEmprestimo");
-
+		
+		emprestimo.setDataEmprestimo();
 		emprestimoRepository.save(emprestimo);
 		
 		modelAndView.addObject("emprestimos", emprestimoRepository.findAll());
