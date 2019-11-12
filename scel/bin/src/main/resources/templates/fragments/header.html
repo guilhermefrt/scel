@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
 </head>
+
 <body>
-	<header th:fragment="cabecalho">
-		<nav
-			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
-						<i class="oi oi-menu"></i>
-					</button>
-					<a class="navbar-brand " href="">Sistema de Controle de
-						Emprestimo de Livros</a>
+<header th:fragment="cabecalho">
+		<div class="container">
+			<nav
+				class="navbar navbar-expand-lg navbar navbar-dark bg-dark fixed-top">
+				<a class="navbar-brand" href="#">Sistema de Controle de Livros</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mr-4 pr-5">
+						<li class="nav-item active"><a class="nav-link" href="/home">Home
+								<span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Alunos </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/alunos/cadastrar">Cadastrar
+									Alunos</a> <a class="dropdown-item" href="/alunos/consulta">Consultar
+									Alunos</a>
+							</div></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Livros </a>
+
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/livros/cadastrar">Cadastrar
+									Livro</a> <a class="dropdown-item" href="/livros/consulta">Consultar
+									Livros</a>
+							</div></li>
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Empréstimos </a>
+
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/emprestimos/cadastrar">Cadastrar
+									Empréstimo</a> <a class="dropdown-item" href="/emprestimos/consulta">Consultar
+									Empréstimos</a>
+							</div></li>
+					</ul>
 				</div>
-			</div>
-		</nav>
-	</header>
-	<header th:fragment="cabecalhoAluno">
-		<nav
-			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
-						<i class="oi oi-menu"></i>
-					</button>
-					<a class="navbar-brand " href="">Sistema de Controle de Aluno</a>
-				</div>
-			</div>
-		</nav>
-	</header>
-	<header th:fragment="registrarEmprestimo">
-		<nav
-			class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="btn btn-dark navbar-toggle pull-left">
-						<i class="oi oi-menu"></i>
-					</button>
-					<a class="navbar-brand " href="">Registrar Empréstimo</a>
-				</div>
-			</div>
-		</nav>
+			</nav>
+		</div>
 	</header>
 	<br />
 	<br />
 </body>
-</html>
